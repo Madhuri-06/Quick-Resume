@@ -57,9 +57,9 @@ public class Final extends HttpServlet
         pw.println("width: 40%;");
         pw.println("padding-left: 2%;}");
         pw.println(".rightarrange{");
-        pw.println("padding-left: 60%;}");
+        pw.println("padding-left: 60%;width:fit-content;}");
         pw.println(".leftarrange{");
-        pw.println("padding-left: 5%;}");
+        pw.println("padding-left: 5%;width:fit-content;}");
         pw.println(".header{");
         pw.println("display: flex;");
         pw.println("flex-direction: row;");
@@ -82,15 +82,14 @@ public class Final extends HttpServlet
         pw.println("color: rgb(68, 68, 174);}");
         pw.println("#achi{");
         pw.println("color: rgb(68, 68, 174);}");
-        pw.println("</style><script>console.log(\"madhu\"); </script></head><body>");
-        pw.println("");  
-        pw.println("<form onsubmit=\"preventDefault()\" id=\"madhu\" method=\"post\" action=\"resume\">");
+        pw.println("</style></head><body>");
+        
         pw.println("<div id=\"resume\">");
         pw.println("<div class=\"header\">");
         pw.println("<div>");
-            
-            
+        
         ResultSet rs = st.executeQuery("select * from resume1");
+        
             while(rs.next())
             {
                 if((rs.getString("email").equals(email)))
@@ -99,7 +98,7 @@ public class Final extends HttpServlet
                     pw.println("<h3 id=\"role\">"+rs.getString("role")+"</h3>");
                     pw.println("</div>");
                     pw.println("<div class=\"corner\">");
-                    pw.println("<p id=\"pno\">"+rs.getInt("contact")+" <i style=\"font-size:24px\" class=\"fa\">&#xf095;</i></p>");
+                    pw.println("<p id=\"pno\">"+rs.getString("contact")+" <i style=\"font-size:24px\" class=\"fa\">&#xf095;</i></p>");
                     pw.println("<p id=\"mail\">"+rs.getString("email")+" <i style=\"font-size:24px\" class=\"fa\">&#xf0e0;</i> </p>");
                     pw.println("<p id=\"state\">"+rs.getString("state")+" <i class=\"material-icons\">&#xe55f;</i></p>");
    
@@ -111,12 +110,12 @@ public class Final extends HttpServlet
                 if((rs.getString("email").equals(email)))
                 {
                     pw.println("</div></div><div id=\"heads\">");
-                    pw.println("<p class=\"leftarrange\"> Github:  "+rs.getString("github")+"");
+                    pw.println("<p class=\"leftarrange\"> Github: "+rs.getString("github")+"");
                     pw.println("<p class=\"rightarrange\">Linkedin:  "+rs.getString("linkedin")+"</p></div>");
                     pw.println("<div class=\"columnarrange\">");
                     pw.println("<div class=\"firstcolumn\">");
                     pw.println("<h2 id=\"about\">About Me</h2>");
-                    pw.println("<p id=\"about1\"> "+rs.getString("about")+"");
+                    pw.println("<p id=\"about1\"> "+rs.getString("about")+"</p>");
                     //pw.println("To work in a globally competitive environment");
                     //pw.println("on challenging assignments that shall contribute");
                     //pw.println("to the organizations growth and enhance my skills."); 
@@ -128,7 +127,8 @@ public class Final extends HttpServlet
                 }
             } 
         
-             rs = st.executeQuery("select * from resume3");	   
+             rs = st.executeQuery("select * from resume3");
+             	   
             while(rs.next())
             {
                 if((rs.getString("email").equals(email)))
@@ -147,19 +147,27 @@ public class Final extends HttpServlet
             } 
         
             
-             rs = st.executeQuery("select * from resume4");	   
+             rs = st.executeQuery("select * from resume4");
+             String[] skillsarray=new String[10]; 	   
             while(rs.next())
+
             {
+                   
                 if((rs.getString("email").equals(email)))
                 {
-                    pw.println("<p id=\"btech1\">"+rs.getString("year_qualify3")+"");
+                    pw.println("<p id=\"btech1\">"+rs.getString("year_qualify3")+"</p>");
                     //pw.println("2020 - Present");
                     //pw.println("Other Qualification-Information Technology");
-                   
+                    String skills=rs.getString("skills");
+                    skillsarray = skills.split(","); 
+                    
  
-                    }
-                    pw.println("</p></br><h2 id=\"skill\">Skills"+rs.getString("skills")+"</h2></br> ");
-                    //pw.println("<div id=\"ski\"><h4 id=\"1\">Python</h4>");
+                    
+                    pw.println("</br><h2 id=\"skill\">Skills</h2>");
+                    pw.println("<div id=\"ski\">");
+                    for(int j=0;j<skillsarray.length;j++){
+                        pw.println("<h4 id=\""+j+"\">"+skillsarray[j]+"</h4>");
+                        }
                     //pw.println("<h4 id=\"2\">Java</h4>");
                     //pw.println("<h4 id=\"3\">Java Applets</h4>");
                     //pw.println("<h4 id=\"4\">Java AWT</h4>");
@@ -169,7 +177,8 @@ public class Final extends HttpServlet
                     //pw.println("<h4 id=\"8\">Web Development</h4>");
                     //pw.println("<h4 id=\"9\">Problem Solving</h4>");
                     //pw.println("<h4 id=\"10\">Database Management System</h4></div>");
-                    pw.println("</div><div id=\"second\">");
+                    pw.println("</div></div>");
+                    pw.println("<div id=\"second\">");
                     pw.println("<h2 id=\"pro\">Projects</h2>");
                     pw.println("<h4 id=\"p1\">"+rs.getString("title1")+"</h4>");
                     pw.println("<p id=\"p11\">"+rs.getString("des1")+"");
@@ -177,12 +186,16 @@ public class Final extends HttpServlet
                     //pw.println("which include relief riders logo that can spin using Css characteristics");
                     //pw.println("a link to visit that site and also login and sign up buttons are provided.</p>");
                 }
+            }
             
             rs = st.executeQuery("select * from resume5");	   
+            String[] achievementsarray=new String[100]; 
             while(rs.next())
             {
                 if((rs.getString("email").equals(email)))
                 {
+                    String achievements=rs.getString("achievements");
+                    achievementsarray = achievements.split(","); 
                     pw.println("<h4 id=\"p2\">"+rs.getString("title2")+"</h4>");
                     pw.println("<p id=\"p22\">"+rs.getString("des2")+"");
                     //pw.println("Web page which shows the popular shopping site Meesho its features");
@@ -193,16 +206,19 @@ public class Final extends HttpServlet
                     //pw.println("Dynamic Webpage contains an filled cone and whenever the cone is");
                     //pw.println("emptied we can refill the cone which is done using javascript.</p></br>");
                     pw.println("<h2 id=\"achi\">Achievements</h2>");
-                    pw.println("<div class=\"achievements\">"+rs.getString("achievements")+"");
+                    pw.println("<div id=\"ski\">");
+                    for(int k=0;k<achievementsarray.length;k++){
+                        pw.println("<p id=\""+k+"\">"+achievementsarray[k]+"</p>");
+                        }
                     //pw.println("<span>Achieved certification by FREE CODE CAMP on Html ,"); 
                     //pw.println("Css and ORACLE on Java Fundamentals</span>");
                     //pw.println("<span>Achieved certification by INFOSYS SPRINGBOARD on Python</span>");
                     //pw.println("<span>Achieved certification by CELONIS ACADEMY on Process Mining</span>");
                     //pw.println("<span>Worked as Volunteer for AWS drive conducted in our college</span></p>");
-                    pw.println("</div></div></div></div></form></body></html>");    
+                    
                 }
             }
-       
+            pw.println("</div></div></div></div></body></html>");    
     }
     catch (Exception e){
         e.printStackTrace();

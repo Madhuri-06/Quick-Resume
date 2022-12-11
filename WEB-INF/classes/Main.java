@@ -29,7 +29,7 @@ public class Main extends HttpServlet
         pw.println("</style>");
         pw.println("</head>");
         pw.println("<body>");
-        pw.println("<form action=\"/pla/resume\" method=\"POST\">");
+        pw.println("<form action=\"/Quick Resume/resume\" method=\"POST\">");
         pw.println("<center>");
         pw.println("<div class=\"main\">");
         pw.println("<h3>Name: <input name=\"name\" type=\"text\" id=\"name\"/></h3></br></br>");
@@ -87,7 +87,7 @@ public class Main extends HttpServlet
         pw.println("></textarea></br></br></h3>");
         pw.println("<input type=\"submit\" value=\"submit\" name=\"submit\"/>");
         pw.println("</center></div></form></body> </html>");
-       
+        
         
     }
 	

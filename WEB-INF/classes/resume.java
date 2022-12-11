@@ -13,7 +13,7 @@ public class resume extends HttpServlet
         res.setContentType("text/html");  
         String name=req.getParameter("name");
         String role=req.getParameter("role");
-        int contact=Integer.parseInt(req.getParameter("contact"));   
+        String contact=req.getParameter("contact");   
         String email=req.getParameter("email");   
         String state=req.getParameter("state");
         String github=req.getParameter("github");
@@ -51,7 +51,7 @@ public class resume extends HttpServlet
                 ps.setString(1, email);
                 ps.setString(2, name);
                 ps.setString(3, role);
-                ps.setInt(4, contact);
+                ps.setString(4, contact);
                 ps.setString(5, state);
                 int i = ps.executeUpdate();
                 
@@ -94,7 +94,7 @@ public class resume extends HttpServlet
                 ps.setString(5, des3);
                 ps.setString(6, achievements);   
                 i = ps.executeUpdate();
-                
+               
                 RequestDispatcher rd = req.getRequestDispatcher("/final");
                 rd.forward(req,res);
             

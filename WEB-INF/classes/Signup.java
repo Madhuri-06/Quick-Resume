@@ -56,7 +56,7 @@ public class Signup extends HttpServlet
                 }     
               else{
                     pw.println("<script>alert('User already exists!')</script>");
-                    res.setHeader("refresh", "1;url=http://localhost:8081/pla/index.html");
+                    res.setHeader("refresh", "1;url=http://localhost:8081/Quick Resume/index.html");
    
               }      
                        

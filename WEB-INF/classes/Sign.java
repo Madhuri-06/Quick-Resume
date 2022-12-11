@@ -34,7 +34,7 @@ public class Sign extends HttpServlet
 			
             
                pw.println("<script>alert('Invalid username or password!')</script>");
-               res.setHeader("refresh", "1;url=http://localhost:8081/pla/index.html");
+               res.setHeader("refresh", "1;url=http://localhost:8081/Quick Resume/index.html");
                
          
              pw.close();
