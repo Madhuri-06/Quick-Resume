@@ -85,7 +85,7 @@ public class resume extends HttpServlet
                 ps.setString(5, des1);
                 i = ps.executeUpdate();
                
-             
+                
                 ps = c.prepareStatement("insert into resume5 values(?,?,?,?,?,?)");
                 ps.setString(1, email);
                 ps.setString(2, title2);
